@@ -1,6 +1,6 @@
 import React, { useReducer } from "react";
 import reducer, { initialState } from "./reducers/index";
-import { addOne, applyNumber } from "./actions/index";
+import { addOne, applyNumber, changeOperator } from "./actions/index";
 
 import "./App.css";
 
@@ -19,6 +19,12 @@ function App() {
     e.preventDefault();
     console.log(applyNumber(parseInt(e.target.innerText)));
     dispatch(applyNumber(parseInt(e.target.innerText)));
+  };
+
+  const handleOperatorChange = (e) => {
+    e.preventDefault();
+    console.log(changeOperator(e.target.innerText));
+    dispatch(changeOperator(e.target.innerText));
   };
 
   return (
@@ -68,9 +74,9 @@ function App() {
             </div>
 
             <div className="row">
-              <CalcButton value={"+"} />
-              <CalcButton value={"*"} />
-              <CalcButton value={"-"} />
+              <CalcButton value={"+"} onClick={handleOperatorChange} />
+              <CalcButton value={"*"} onClick={handleOperatorChange} />
+              <CalcButton value={"-"} onClick={handleOperatorChange} />
             </div>
 
             <div className="row ce_button">
