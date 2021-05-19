@@ -1,6 +1,6 @@
 import React, { useReducer } from "react";
 import reducer, { initialState } from "./reducers/index";
-import { addOne } from "./actions/index";
+import { addOne, applyNumber } from "./actions/index";
 
 import "./App.css";
 
@@ -10,10 +10,15 @@ import CalcButton from "./components/CalcButton";
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const handleAddOne = (e) => {
+  // const handleAddOne = (e) => {
+  //   e.preventDefault();
+  //   //console.log(addOne());
+  //   dispatch(addOne());
+  // };
+  const handleApplyNumber = (e) => {
     e.preventDefault();
-    //console.log(addOne());
-    dispatch(addOne());
+    console.log(applyNumber(parseInt(e.target.innerText)));
+    dispatch(applyNumber(parseInt(e.target.innerText)));
   };
 
   return (
@@ -45,21 +50,21 @@ function App() {
             </div>
 
             <div className="row">
-              <CalcButton value={1} onClick={handleAddOne} />
-              <CalcButton value={2} />
-              <CalcButton value={3} />
+              <CalcButton value={1} onClick={handleApplyNumber} />
+              <CalcButton value={2} onClick={handleApplyNumber} />
+              <CalcButton value={3} onClick={handleApplyNumber} />
             </div>
 
             <div className="row">
-              <CalcButton value={4} />
-              <CalcButton value={5} />
-              <CalcButton value={6} />
+              <CalcButton value={4} onClick={handleApplyNumber} />
+              <CalcButton value={5} onClick={handleApplyNumber} />
+              <CalcButton value={6} onClick={handleApplyNumber} />
             </div>
 
             <div className="row">
-              <CalcButton value={7} />
-              <CalcButton value={8} />
-              <CalcButton value={9} />
+              <CalcButton value={7} onClick={handleApplyNumber} />
+              <CalcButton value={8} onClick={handleApplyNumber} />
+              <CalcButton value={9} onClick={handleApplyNumber} />
             </div>
 
             <div className="row">
